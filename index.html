@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,6 +34,8 @@
       background: rgba(255, 255, 255, 0.15);
       border-radius: 20px;
       transition: transform 0.3s ease;
+      max-width: 350px;  /* لتصغير عرض الكارد */
+      padding: 2rem;
     }
     .card-custom:hover {
       transform: translateY(-10px) scale(1.02);
@@ -56,22 +58,26 @@
       top: 20px;
       left: 20px;
     }
+    #bio {
+      font-size: 0.9rem; /* لتصغير النصوص الطويلة */
+      line-height: 1.4rem;
+    }
   </style>
 </head>
 <body>
 
   <!-- زر تغيير اللغة -->
   <button onclick="toggleLang()" class="lang-btn px-4 py-2 bg-white text-black rounded-lg shadow-md hover:bg-gray-200">
-    EN
+    AR
   </button>
 
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-6 col-lg-4">
-        <div class="card-custom shadow-lg text-white text-center p-5">
+      <div class="col-auto">
+        <div class="card-custom shadow-lg text-white text-center">
           <img src="image.png" alt="Yousif Nawras" class="profile-img w-32 h-32 mx-auto rounded-full mb-4">
           <h1 id="name" class="text-2xl font-bold mb-2"></h1>
-          <p id="bio" class="text-sm leading-relaxed mb-4"></p>
+          <p id="bio" class="leading-relaxed mb-4"></p>
 
           <div class="social-links flex justify-center gap-4 text-xl">
             <a href="https://t.me/you01f" target="_blank" class="p-3 rounded-full bg-blue-500 hover:bg-blue-600"><i class="fab fa-telegram"></i></a>
@@ -87,35 +93,34 @@
   <script>
     // الترجمات
     const translations = {
-  ar: {
-    name: "يوسف نورس",
-    bio: `
-      طالب هندسة تقنيات البناء والإنشاء <br>
-      عضو المجلس الأعلى للشباب <br>
-      فريق التحول الرقمي الوطني <br>
-      مسؤول بمنصة IVO <br>
-      رئيس فريق التسويق والإعلام <br>
-      خبير برمجة وأمن سيبراني <br>
-      منتج موسيقي
-    `
-  },
-  en: {
-    name: "Yousif Nawras",
-    bio: `
-      Construction and Building Technology Engineering student <br>
-      Member of the Supreme Council for Youth <br>
-      National Digital Team <br>
-      IVO official <br>
-      Head of the Marketing, Public Relations and Media Content team <br>
-      Expert in artificial intelligence and cybersecurity <br>
-      Music producer
-    `
-  }
-};
+      ar: {
+        name: "يوسف نورس",
+        bio: `
+          طالب هندسة تقنيات البناء والإنشاء <br>
+          عضو المجلس الأعلى للشباب <br>
+          فريق التحول الرقمي الوطني <br>
+          مسؤول بمنصة IVO <br>
+          رئيس فريق التسويق والإعلام <br>
+          خبير برمجة وأمن سيبراني <br>
+          منتج موسيقي
+        `
+      },
+      en: {
+        name: "Yousif Nawras",
+        bio: `
+          Construction and Building Technology Engineering student <br>
+          Member of the Supreme Council for Youth <br>
+          National Digital Transformation Team <br>
+          IVO official <br>
+          Head of Marketing, PR and Media Content team <br>
+          AI and Cybersecurity expert <br>
+          Music producer
+        `
+      }
+    };
 
-
-    // اللغة الحالية
-    let currentLang = "ar";
+    // اللغة الحالية (الأساسي إنجليزي)
+    let currentLang = "en";
 
     // تحميل أول مرة
     function loadLang() {
