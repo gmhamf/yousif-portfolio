@@ -1,0 +1,154 @@
+
+<!-- 
+  Designed by: Mohamed Sadiq
+  Portfolio for: Yousif Nawras
+  Date: 2025
+-->
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yousif Nawras</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(-45deg, #1e3c72, #2a5298, #6a11cb, #2575fc);
+      background-size: 400% 400%;
+      animation: gradient 12s ease infinite;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+    }
+    @keyframes gradient {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    .card-custom {
+      backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 25px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .card-custom:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    .profile-img {
+      border: 5px solid #fff;
+      transition: transform 0.4s ease;
+    }
+    .profile-img:hover {
+      transform: scale(1.08) rotate(5deg);
+    }
+    /* الأيقونات العائمة */
+    .floating-icons {
+      position: fixed;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 999;
+    }
+    .floating-icons a {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      font-size: 20px;
+      padding: 12px;
+      border-radius: 50%;
+      transition: 0.3s;
+      backdrop-filter: blur(8px);
+    }
+    .floating-icons a:hover {
+      background: rgba(255,255,255,0.5);
+      transform: scale(1.2) rotate(12deg);
+    }
+    /* زر اللغة */
+    .lang-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- أيقونات عائمة -->
+  <div class="floating-icons">
+    <a href="https://t.me/you01f" target="_blank"><i class="fab fa-telegram"></i></a>
+    <a href="https://instagram.com/k6.__q" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/in/yousif-nawras-168a63350" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:yousifnawras02@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+  </div>
+
+  <!-- زر تغيير اللغة -->
+  <button onclick="toggleLang()" class="lang-btn px-4 py-2 bg-white text-black rounded-lg shadow-md hover:bg-gray-200">
+    EN
+  </button>
+
+  <!-- الكارد -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card-custom shadow-lg text-white text-center p-6">
+          <img src="image.png" alt="Yousif Nawras" class="profile-img w-36 h-36 mx-auto rounded-full mb-4">
+          <h1 id="name" class="text-3xl font-bold mb-3"></h1>
+          <p id="bio" class="text-base leading-relaxed mb-4"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // الترجمات
+    const translations = {
+      ar: {
+        name: "يوسف نورس",
+        bio: `طالب هندسة تكنولوجيا البناء والتشييد، عضو في المجلس الأعلى للشباب، وعضو في الفريق الوطني الرقمي، ومسؤول رسمي في IVO، ورئيس فريق التسويق والعلاقات العامة والمحتوى الإعلامي. خبير في الذكاء الاصطناعي والأمن السيبراني، إضافةً إلى كونه منتجًا موسيقيًا.`
+      },
+      en: {
+        name: "Yousif Nawras",
+        bio: `Construction and Building Technology Engineering student, member of the Supreme Council for Youth, National Digital Team, IVO official, head of the Marketing, Public Relations and Media Content team, expert in artificial intelligence and cybersecurity, and music producer.`
+      }
+    };
+
+    // اللغة الحالية
+    let currentLang = localStorage.getItem("lang") || "ar";
+
+    // تحميل النصوص
+    function loadLang() {
+      document.getElementById("name").innerText = translations[currentLang].name;
+      document.getElementById("bio").innerText = translations[currentLang].bio;
+      document.querySelector(".lang-btn").innerText = currentLang === "ar" ? "EN" : "AR";
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+      localStorage.setItem("lang", currentLang);
+    }
+
+    // تبديل اللغة
+    function toggleLang() {
+      currentLang = currentLang === "ar" ? "en" : "ar";
+      loadLang();
+    }
+
+    // تشغيل أول مرة
+    loadLang();
+  </script>
+
+</body>
+</html>
